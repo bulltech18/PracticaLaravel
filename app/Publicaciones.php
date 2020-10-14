@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Publicaciones extends Model
 {
     public function persona(){
-        return $this->belongsto('App\Personas');
+        return $this->belongsTo('App\Personas');
     }
     public function comentarios(){
-        return $this->hasmany('App\Comentarios');
+        return $this->hasMany('App\Comentarios');
     }
 }

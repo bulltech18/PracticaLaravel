@@ -96,9 +96,18 @@ class PersonasController extends Controller
      * @param  \App\Personas  $personas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(int $id)
+    
+     /*public function destroy(int $id)
     {
-        Personas::destroy($id);
+        Personas::delete($id);
         return response()->json('Se Elimino Correctamente',202);
+    }*/
+    public function eliminar(int $id){
+        $eliminarPersona = \App\Personas::find($id);
+        $eliminarPersona->delete();
+        return response()->json([
+                                "mensaje" => "persona eliminada",
+                                "persona" => \App\Personas::all()
+                                ],200);
     }
 }

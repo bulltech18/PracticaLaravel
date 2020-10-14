@@ -16,8 +16,8 @@ class CreateComentariosTable extends Migration
         Schema::create('comentarios', function (Blueprint $table) {
             $table->id();
             $table->text('cuerpo');
-            $table->foreignId('publicacion_id')->references('id')->on('publicaciones');
-            $table->foreignId('persona_id')->references('id')->on('personas');
+            $table->foreignId('publicacion_id')->references('id')->on('publicaciones')->onDelete('cascade');
+            $table->foreignId('persona_id')->references('id')->on('personas')->onDelete('cascade');
             $table->timestamps();
         });
     }

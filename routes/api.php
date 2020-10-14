@@ -21,7 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //personas
 Route::get('personas/{id?}','PersonasController@show')->where( 'id','[0-9]+');
 
-Route::delete('personas/eliminar/{id?}','PersonasController@destroy')->where( 'id','[0-9]+');
+Route::delete('eliminar/{id?}','PersonasController@eliminar')->where( 'id','[0-9]+');
 
 Route::get('NuevaPersona/{nombre?}/{apellido?}/{edad?}/{sexo?}','PersonasController@create')->where(['nombre'=>'[A-Z,a-z]+',
 'apellido'=>'[A-Z,a-z]+','edad'=>'[0-9]+','sexo'=>'[A-Z,a-z]+']);
@@ -38,6 +38,12 @@ Route::get('publicaciones/NuevaPubli/{titulo?}/{cuerpo?}/{persona_id?}','Publica
 Route::put('publicaciones/update/{id}/{titulo?}/{cuerpo?}/{persona_id?}','PublicacionesController@update')->where(['id'=>'[0-9]+','titulo'=>'[A-Z,a-z]+',
 'cuerpo'=>'[A-Z,a-z]+','persona_id'=>'[0-9]+']);
 Route::delete('publicaciones/eliminar/{id?}','PublicacionesController@destroy')->where( 'id','[0-9]+');
+Route::get('/buscar/publicacion/persona/{persona}/publicacion/{publicacion?}','PublicacionesController@publicacionPersona')->where(
+    [
+        'persona' => '[0-9]+',
+        'publicacion' =>'[0-9]+'
+    ]
+);
 
 
 
@@ -46,3 +52,5 @@ Route::get('comentarios/nuevoComent/{cuerpo?}/{publicacion_id?}/{persona_id?}','
 Route::get('comentarios/{id?}','ComentariosController@show')->where( 'id','[0-9]+');
 Route::put('comentarios/actualizar/{id?}')->where( 'id','[0-9]+');
 Route::delete('comentarios/eliminar/{id}','ComentariosController@destroy')->where('id','[0-9]+');
+Route::get('comentarios/{id?}/persona/{persona_id}','ComentariosController@consultaPersona')
+->where( ['id','[0-9]+','persona_id','[0-9]+']);

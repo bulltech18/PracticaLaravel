@@ -96,4 +96,11 @@ class ComentariosController extends Controller
         Comentarios::destroy($id);
         return response()->json('Eliminado',200);
     }
+    public function consultaPersona(int $id , int $persona_id){
+        return response()->json([
+            'Persona'=>( $id==null)? 
+            Comentarios::where('persona_id', $persona_id)->get():
+            Comentarios::where('persona_id', $persona_id)->where('id',$id)->get()
+        ],200);
+    }
 }

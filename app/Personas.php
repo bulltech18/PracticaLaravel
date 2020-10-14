@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Personas extends Model
 {
     public function publicaciones(){
-        return $this->hasmany('App\Publicaciones');
+        return $this->hasMany('App\Publicaciones');
     }
     public function comentarios(){
-        return $this->hasmany('App\Comentarios');
+        return $this->hasMany('App\Comentarios');
     }
 }

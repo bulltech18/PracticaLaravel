@@ -94,4 +94,11 @@ class PublicacionesController extends Controller
         Publicaciones::destroy($id);
         return response()->json('Eliminado',202);
     }
+
+    public function publicacionPersona(int $persona, int $publicacion = null){
+
+        return response()->json([
+                                "publicacion"=>($publicacion == null)?\App\Publicaciones::where('persona_id', $persona)->get():\App\Publicaciones::where('persona_id', $persona)->where('id',$publicacion)->get()
+                                ],200);
+    }
 }

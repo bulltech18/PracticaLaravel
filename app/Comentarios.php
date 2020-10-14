@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Comentarios extends Model
 {
     public function persona(){
-        return $this->belongsto('App\Personas');
+        return $this->belongsTo('App\Personas');
     }
     public function publicaciones(){
-        return $this->belongsto('App\Publicaciones');
+        return $this->belongsTo('App\Publicaciones');
     }
 }
