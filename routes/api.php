@@ -38,7 +38,7 @@ Route::get('publicaciones/NuevaPubli/{titulo?}/{cuerpo?}/{persona_id?}','Publica
 Route::put('publicaciones/update/{id}/{titulo?}/{cuerpo?}/{persona_id?}','PublicacionesController@update')->where(['id'=>'[0-9]+','titulo'=>'[A-Z,a-z]+',
 'cuerpo'=>'[A-Z,a-z]+','persona_id'=>'[0-9]+']);
 Route::delete('publicaciones/eliminar/{id?}','PublicacionesController@destroy')->where( 'id','[0-9]+');
-Route::get('/buscar/publicacion/persona/{persona}/publicacion/{publicacion?}','PublicacionesController@publicacionPersona')->where(
+Route::get('/buscar/persona/{persona}/publicacion/{publicacion?}','PublicacionesController@publicacionPersona')->where(
     [
         'persona' => '[0-9]+',
         'publicacion' =>'[0-9]+'
@@ -52,5 +52,7 @@ Route::get('comentarios/nuevoComent/{cuerpo?}/{publicacion_id?}/{persona_id?}','
 Route::get('comentarios/{id?}','ComentariosController@show')->where( 'id','[0-9]+');
 Route::put('comentarios/actualizar/{id?}')->where( 'id','[0-9]+');
 Route::delete('comentarios/eliminar/{id}','ComentariosController@destroy')->where('id','[0-9]+');
-Route::get('comentarios/{id?}/persona/{persona_id}','ComentariosController@consultaPersona')
+Route::get('persona/{persona_id}/comentario/{id?}','ComentariosController@consultaPersona')
 ->where( ['id','[0-9]+','persona_id','[0-9]+']);
+Route::get('personas/{persona_id}/publicaciones/{publicacion_id}/comentarios/{id?}', 'ComentariosController@personaPublicacionComent')->where( ['publicacion_id','[0-9]+','id','[0-9]+','persona_id','[0-9]+']);
+Route::get('comentarios/publicaciones/personas', 'ComentariosController@mostrarTodo');
