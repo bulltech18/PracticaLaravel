@@ -106,7 +106,7 @@ class ComentariosController extends Controller
         ],200);
     }
     
-    public function comentarioPubli(int $publicacion_id, int $id){
+    public function comentarioPubli(int $publicacion_id, int $id = NULL){
         return response()->json([
          'Respuesta'=>($id==null)?
          Comentarios::where('publicacion_id', $publicacion_id)->get():
