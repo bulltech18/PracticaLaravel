@@ -23,8 +23,7 @@ Route::get('personas/{id?}','PersonasController@show')->where( 'id','[0-9]+');
 
 Route::delete('eliminar/{id?}','PersonasController@eliminar')->where( 'id','[0-9]+');
 
-Route::get('NuevaPersona/{nombre?}/{apellido?}/{edad?}/{sexo?}','PersonasController@create')->where(['nombre'=>'[A-Z,a-z]+',
-'apellido'=>'[A-Z,a-z]+','edad'=>'[0-9]+','sexo'=>'[A-Z,a-z]+']);
+Route::get('personas/registro','PersonasController@create')->middleware('verificar.edad');
 
 Route::put('personas/update/{id?}/{nombre?}/{apellido?}/{edad?}/{sexo?}','PersonasController@update')->where(['id'=>'[0-9]+','nombre'=>'[A-Z,a-z]+',
 'apellido'=>'[A-Z,a-z]+','edad'=>'[0-9]+','sexo'=>'[A-Z,a-z]+']);

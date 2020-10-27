@@ -17,7 +17,7 @@ class CreateComentariosTable extends Migration
             $table->id();
             $table->text('cuerpo');
             $table->foreignId('publicacion_id')->references('id')->on('publicaciones')->onDelete('cascade');
-            $table->foreignId('persona_id')->references('id')->on('personas')->onDelete('cascade');
+            $table->foreignId('usuario_id')->references('id')->on('usuarios')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -9,6 +9,7 @@ $factory->define(Comentarios::class, function (Faker $faker) {
     return [
         'cuerpo'=>$faker->text(50),
         'publicacion_id'=>$faker->numberbetween(1,30),
-        'persona_id'=>$faker->numberbetween(1,10),
+        'usuario_id'=>$faker->numberbetween(1,10),
     ];
 });
+

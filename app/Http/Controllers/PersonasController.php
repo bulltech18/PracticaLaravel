@@ -22,13 +22,13 @@ class PersonasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(string $nombre, string $apellido, int $edad, string $sexo)
+    public function create(request $request)
     {
         $registroNuevo = new Personas;
-        $registroNuevo->nombre = $nombre;
-        $registroNuevo->apellido = $apellido;
-        $registroNuevo->edad = $edad;
-        $registroNuevo->sexo = $sexo;
+        $registroNuevo->nombre = $request -> nombre;
+        $registroNuevo->apellido = $request -> apellido;
+        $registroNuevo->edad = $request-> edad;
+        $registroNuevo->sexo = $request -> sexo;
 
         $registroNuevo->Save();
         return response()->json('Complete',202);

@@ -4,10 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Personas extends Model
+class Roles extends Model
 {
     public function usuarios(){
-        return $this->hasMany('App\Usuarios');
+        return $this->hasOne('App\Usuarios');
     }
-    
 }
