@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 //personas
-Route::get('personas/{id?}','PersonasController@show')->where( 'id','[0-9]+');
+Route::get('personas/{id?}','PersonasController@show')->where( 'id','[0-9]+')->middleware('verificar.rol');
 
 Route::delete('eliminar/{id?}','PersonasController@eliminar')->where( 'id','[0-9]+');
 
@@ -27,6 +27,7 @@ Route::get('personas/registro','PersonasController@create')->middleware('verific
 
 Route::put('personas/update/{id?}/{nombre?}/{apellido?}/{edad?}/{sexo?}','PersonasController@update')->where(['id'=>'[0-9]+','nombre'=>'[A-Z,a-z]+',
 'apellido'=>'[A-Z,a-z]+','edad'=>'[0-9]+','sexo'=>'[A-Z,a-z]+']);
+
 Route::get('publicaciones/{id?}','PublicacionesController@show')->where( 'id','[0-9]+');
 
 
@@ -56,3 +57,5 @@ Route::get('persona/{persona_id}/comentario/{id?}','ComentariosController@consul
 Route::get('personas/{persona_id}/publicaciones/{publicacion_id}/comentarios/{id?}', 'ComentariosController@personaPublicacionComent')->where( ['publicacion_id','[0-9]+','id','[0-9]+','persona_id','[0-9]+']);
 Route::get('comentarios/publicaciones/personas', 'ComentariosController@mostrarTodo');
 Route::get('publicacion/{publicacion_id}/comentario/{id?}', 'ComentariosController@comentarioPubli')->where( ['publicacion_id','[0-9]+','id','[0-9]+']);
+
+

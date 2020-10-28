@@ -18,8 +18,8 @@ class CreateUsuariosTable extends Migration
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('password');
-            $table->foreignId('persona_id')->references('id')->on('personas');
-            $table->foreignId('rol_id')->references('id')->on('roles');
+            $table->foreignId('persona_id')->references('id')->on('personas')->onDelete('cascade');
+            $table->foreignId('rol_id')->references('id')->on('roles')->onDelete('cascade');
             $table->timestamp('email_verified_at');
             $table->timestamps();
         });
