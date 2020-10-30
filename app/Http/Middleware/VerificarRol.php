@@ -15,7 +15,7 @@ class VerificarRol
      */
     public function handle($request, Closure $next)
     {
-        if($request->rol == 1)
+        if($request->user()->tokenCan('Usuario'))
         {
             abort(403, "No se puede carnal perdoname neta es mi trabajo");
         }
